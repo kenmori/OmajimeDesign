@@ -6,6 +6,7 @@ import {Member} from '../component/Member';
 import {Footer} from '../component/Footer';
 import '../scss/Home.css';
 import logo from '../img/logo.png';
+import { Link } from 'react-router-dom';
 
 export class Home extends Component {
     constructor(){
@@ -21,7 +22,7 @@ export class Home extends Component {
                 <nav>
                     <ul>
                         <li>
-                            <a href=''>
+                            <a href='#service'>
                                 <h1>
                                     SERVICE
                                 </h1>
@@ -31,7 +32,7 @@ export class Home extends Component {
                     </ul>
                 </nav>
                 </section>
-                <section className='service'>
+                <section id='service' className='service'>
                     <div>
                         <h1>SERVICE</h1>
                         <div>
