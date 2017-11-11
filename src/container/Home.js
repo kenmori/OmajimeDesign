@@ -4,6 +4,7 @@ import {OmajimeForm} from '../component/OmajimeForm';
 import {ProductionExperience} from '../component/Experience';
 import {Member} from '../component/Member';
 import {Footer} from '../component/Footer';
+import '../scss/Home.css';
 
 export class Home extends Component {
     constructor(){
