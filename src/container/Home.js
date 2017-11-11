@@ -18,9 +18,25 @@ export class Home extends Component {
                 <section className='main'>
                     <h1><img src={logo} alt='' width='200'/></h1>
                 </section>
-                <section>
+                <section className='navigation on'>
                 <nav>
-                    <ul>
+                    <ul className='navigation__items'>
+                        <li>
+                            <a href='#service'>
+                                <h1>
+                                    SERVICE
+                                </h1>
+                                <span>サービス</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href='#service'>
+                                <h1>
+                                    SERVICE
+                                </h1>
+                                <span>サービス</span>
+                            </a>
+                        </li>
                         <li>
                             <a href='#service'>
                                 <h1>

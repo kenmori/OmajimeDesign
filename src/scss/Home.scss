@@ -1,3 +1,50 @@
+html {
+	position: relative;
+}
+
 body {
 	background: #fff100;
+}
+@media (min-width: 461px) and (max-width: 1200px) {
+	.navigation {
+		&__items {
+			display: flex;
+			width: 100%;
+			li {
+			}
+		}
+	}
+}
+@media (min-width: 320px) and (max-width: 460px) {
+	.navigation {
+		position: absolute;
+		left: -320px;
+	}
+}
+
+@media screen and (max-width: 460px) {
+	.navigation {
+		height: auto;
+		background: #000;
+		position: absolute;
+		height: 100%;
+		z-index: 30;
+		width: 72%;
+		opacity: 0.8;
+		padding-top: 40px !important;
+		transition: all 300ms 0s ease;
+		left: -73%;
+	}
+	.navigation.on {
+		transition: all 300ms 0s ease;
+		left: 0;
+		top: 0px !important;
+		margin: initial;
+	}
+	.navigation__inner {
+		width: 109px;
+		margin: 0 auto;
+		text-align: center;
+		padding: 0;
+	}
 }
