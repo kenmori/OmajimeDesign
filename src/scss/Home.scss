@@ -48,3 +48,23 @@ body {
 		padding: 0;
 	}
 }
+
+@media screen and (max-width: 460px) {
+	.pageHeader {
+		top: 0px !important;
+		margin: initial;
+	}
+}
+
+@media screen and (max-width: 460px) {
+	.menu:after {
+		content: 'メニュ';
+		z-index: 30;
+		width: 38px;
+		height: 25px;
+		display: inline-block;
+		position: absolute;
+		left: 20px;
+		top: 20px;
+	}
+}

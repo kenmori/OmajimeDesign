@@ -15,10 +15,11 @@ export class Home extends Component {
     render(){
         return (
             <div className='omajime'>
+                <div id='js-menu' className='menu'></div>
                 <section className='main'>
                     <h1><img src={logo} alt='' width='200'/></h1>
                 </section>
-                <section className='navigation on'>
+                <section className='navigation pageHeader'>
                 <nav>
                     <ul className='navigation__items'>
                         <li>
@@ -30,7 +31,7 @@ export class Home extends Component {
                             </a>
                         </li>
                         <li>
-                            <a href='#service'>
+                            <a href='#fafa'>
                                 <h1>
                                     SERVICE
                                 </h1>
@@ -38,7 +39,7 @@ export class Home extends Component {
                             </a>
                         </li>
                         <li>
-                            <a href='#service'>
+                            <a href='#eee'>
                                 <h1>
                                     SERVICE
                                 </h1>
