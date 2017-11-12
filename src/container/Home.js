@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {ToFormButton} from '../component/Button';
-import {OmajimeForm} from '../component/Omajime';
+import {OmajimeForm} from '../component/OmajimeForm';
 import {ProductionExperience} from '../component/Experience';
 import {Member} from '../component/Member';
 import {Footer} from '../component/Footer';
@@ -80,7 +80,7 @@ export class Home extends Component {
                 <section className='contact'>
                     <h1>CONTACT</h1>
                     <p>他にも多数実績がございますので、まずはお気軽にお問いあわせください</p>
-                    <OmajimeForm />
+                    <OmajimeForm formApi='/fafa'/>
                 </section>
                 <Footer />
             </div>
