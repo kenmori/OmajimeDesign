@@ -5,6 +5,7 @@ import {ProductionExperience} from '../component/Experience';
 import {Member} from '../component/Member';
 import {Footer} from '../component/Footer';
 import '../scss/Home.css';
+import logo from '../img/logo.png';
 
 export class Home extends Component {
     constructor(){
@@ -12,9 +13,9 @@ export class Home extends Component {
     }
     render(){
         return (
-            <div className='mlabo'>
+            <div className='omajime'>
                 <section className='main'>
-                    <h1><img src='' alt='mLabo'/></h1>
+                    <h1><img src={logo} alt='' width='200'/></h1>
                 </section>
                 <section>
                 <nav>
