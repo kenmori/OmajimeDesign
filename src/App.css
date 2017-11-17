@@ -1,2 +1,5 @@
 body {
   background: #fff100; }
+
+li {
+  list-style: none; }
