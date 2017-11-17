@@ -11,7 +11,7 @@ export class OmajimeForm extends Component {
         }
     }
     submitWrap = (e, formApi) => {
-    console.log(e, formApi, "ラッパーの中");;
+    console.log(e, formApi, "ラッパーの中");
     this.setState(Object.assign({}, formApi.values, {submits: formApi.submits}), formApi.submitForm());
 console.log("submitForm成功");
 }
