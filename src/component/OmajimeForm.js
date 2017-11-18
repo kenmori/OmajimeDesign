@@ -29,7 +29,7 @@ render(){
 >
     {
         formApi => (
-    <form onSubmit={formApi.submitForm} id='form1'>
+    <form onSubmit={formApi.submitForm} action='post' id='form1'>
         <div>
         <div><label htmlFor='corporateName' /><span>必須</span></div>
         <Text field='corporateName' id='corporateName' />
