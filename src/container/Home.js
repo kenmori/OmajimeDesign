@@ -100,7 +100,7 @@ export class Home extends Component {
                 <section className='contact'>
                     <h1>CONTACT</h1>
                     <p>他にも多数実績がございますので、まずはお気軽にお問いあわせください</p>
-                    <OmajimeForm formApi='/fafa'/>
+                    <OmajimeForm formApi='http://localhost:3000/profile'/>
                 </section>
                 <Footer />
             </div>
