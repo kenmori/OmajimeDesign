@@ -5,7 +5,7 @@ import {ProductionExperience} from '../component/Experience';
 import {Member} from '../component/Member';
 import {Footer} from '../component/Footer';
 import '../scss/Home.css';
-import logo from '../img/logo.png';
+import logo from '../svg/logo.svg';
 import ReactSVG from 'react-svg';
 import { Link } from 'react-router-dom';
 
