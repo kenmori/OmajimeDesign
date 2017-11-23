@@ -4,7 +4,8 @@ import {OmajimeForm} from '../component/OmajimeForm';
 import {ProductionExperience} from '../component/Experience';
 import {Member} from '../component/Member';
 import {Footer} from '../component/Footer';
-import '../scss/Home.css';
+import '../scss/base/reset.css';
+import '../scss/pages/Home.css';
 import logo from '../svg/logo.svg';
 import ReactSVG from 'react-svg';
 import { Link } from 'react-router-dom';
@@ -23,34 +24,36 @@ export class Home extends Component {
                 <section className='navigation pageHeader'>
                 <nav>
                     <ul className='navigation__items'>
-                        <li>
-                            <a href='#service'>
-                                <h1>
-                                    SERVICE
-                                </h1>
-                                <span>サービス</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href='#fafa'>
-                                <h1>
-                                    SERVICE
-                                </h1>
-                                <span>サービス</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href='#eee'>
-                                <h1>
-                                    SERVICE
-                                </h1>
-                                <span>サービス</span>
-                            </a>
-                        </li>
+            <li>
+            <a href='#service'>
+            <span>サービス</span>
+            </a>
+            </li>
+            <li>
+            <a href='#works'>
+            <span>WORKS</span>
+            </a>
+            </li>
+            <li>
+            <a href='#member'>
+            <span>MEMBER</span>
+            </a>
+            </li>
+            <li>
+            <a href='#corporate'>
+            <span>CORPORATE</span>
+            </a>
+            </li>
+            <li>
+            <a href='#contact'>
+            <span>CONTACT</span>
+            </a>
+            </li>
                     </ul>
                 </nav>
                 </section>
                 <section id='service' className='service'>
+                    <div className='service__content'>
                     <div>
                         <h1>SERVICE</h1>
                         <div>
@@ -72,10 +75,11 @@ export class Home extends Component {
                     <div>
                         <ToFormButton />
                     </div>
+                </div>
                 </section>
-                <section className='works'>
+                <section id='works' className='works'>
                     <h1>WORKS</h1>
-                    <div>
+                    <div className='works__content'>
                         <ul>
                             <ProductionExperience />
                         </ul>
@@ -83,28 +87,43 @@ export class Home extends Component {
                         <ToFormButton />
                     </div>
                 </section>
-                <section className='member'>
+                <section id='member' className='member'>
                     <h1>MEMBER</h1>
+                    <div className='member__content'>
                     <ul>
                         <Member name='moritakenji' en='moritakenji' text='' />
                     </ul>
-                </section>
-                <section className='corporate'>
-                    <h1>CORPORATE</h1>
-                    <div>
-                        屋号 | 大真面目デザイン
                     </div>
-                    <div>代表 | 森田賢二</div>
-                    <div>設立日 | 2017年1月1日</div>
-                    <div>事業内容 |  Webサービス受託開発</div>
                 </section>
-                <section className='contact'>
+                <section id='corporate' className='corporate'>
+                    <h1>CORPORATE</h1>
+            <div className='corporate__content'>
+            <div className='corporate__item'>
+            <div className='head'>屋号</div><div className='content'>大真面目デザイン</div>
+        </div>
+        <div className='corporate__item'>
+            <div className='head'>代表</div><div className='content'>森田賢二</div>
+            </div>
+            <div className='corporate__item'>
+            <div className='head'>設立日</div><div className='content'>2017年1月1日</div>
+        </div>
+        <div className='corporate__item'>
+            <div className='head'>事業内容</div><div className='content lh14'>ソフトウエア開発 / <br/>Webサービス受託開発</div>
+            </div>
+            </div>
+
+                </section>
+                <section id='contact' className='contact'>
                     <h1>CONTACT</h1>
+                    <div className='contact__content'>
                     <p>他にも多数実績がございますので、まずはお気軽にお問いあわせください</p>
                     <OmajimeForm formApi='http://localhost:3000/profile'/>
+                    </div>
                 </section>
                 <Footer />
             </div>
         )
     }
 }
+
+

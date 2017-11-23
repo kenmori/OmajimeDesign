@@ -1,0 +1,367 @@
+@charset "UTF-8";
+html {
+  position: relative; }
+
+body {
+  background: #fff100; }
+
+.check {
+  width: 22px; }
+
+.technology {
+  display: flex;
+  flex-wrap: wrap; }
+
+.works, .corporate {
+  background: #fff; }
+
+.service h1 {
+  position: relative;
+  font-size: 45px;
+  color: #fff;
+  text-align: center; }
+  .service h1:before {
+    content: "| サービス |";
+    display: inline-block;
+    color: #000;
+    font-size: 10px;
+    line-height: 1em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+  .service h1:after {
+    content: '';
+    width: 80%;
+    height: 5px;
+    background: #fff;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+
+.works h1 {
+  position: relative;
+  font-size: 45px;
+  color: #fff000;
+  text-align: center; }
+  .works h1:before {
+    content: "| 制作実績 |";
+    display: inline-block;
+    color: #000;
+    font-size: 10px;
+    line-height: 1em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+  .works h1:after {
+    content: '';
+    width: 80%;
+    height: 5px;
+    background: #fff000;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+
+.member h1 {
+  position: relative;
+  font-size: 45px;
+  color: #fff;
+  text-align: center; }
+  .member h1:before {
+    content: "| メンバー |";
+    display: inline-block;
+    color: #000;
+    font-size: 10px;
+    line-height: 1em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+  .member h1:after {
+    content: '';
+    width: 80%;
+    height: 5px;
+    background: #fff;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+
+.corporate h1 {
+  position: relative;
+  font-size: 45px;
+  color: #fff000;
+  text-align: center; }
+  .corporate h1:before {
+    content: "| 会社概要 |";
+    display: inline-block;
+    color: #000;
+    font-size: 10px;
+    line-height: 1em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+  .corporate h1:after {
+    content: '';
+    width: 80%;
+    height: 5px;
+    background: #fff000;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+
+.contact h1 {
+  position: relative;
+  font-size: 45px;
+  color: #fff;
+  text-align: center; }
+  .contact h1:before {
+    content: "| お問い合わせ |";
+    display: inline-block;
+    color: #000;
+    font-size: 10px;
+    line-height: 1em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+  .contact h1:after {
+    content: '';
+    width: 80%;
+    height: 5px;
+    background: #fff;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+
+@media (min-width: 320px) and (max-width: 460px) {
+  .main, .service, .member, .works, .corporate, .contact {
+    padding: 0 30px; }
+  .navigation {
+    position: absolute;
+    left: -320px; }
+  .navigation {
+    height: auto;
+    background: #000;
+    position: absolute;
+    height: 100%;
+    z-index: 30;
+    width: 72%;
+    opacity: 0.8;
+    padding-top: 40px !important;
+    transition: all 300ms 0s ease;
+    left: -73%; }
+  .navigation.on {
+    transition: all 300ms 0s ease;
+    left: 0;
+    top: 0px !important;
+    margin: initial; }
+  .navigation__inner {
+    width: 109px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0; }
+  .pageHeader {
+    top: 0px !important;
+    margin: initial; }
+  .menu:after {
+    content: 'メニュ';
+    z-index: 30;
+    width: 38px;
+    height: 25px;
+    display: inline-block;
+    position: absolute;
+    left: 20px;
+    top: 20px; }
+  .main {
+    width: 230px;
+    margin: 0 auto; }
+    .main h1 img {
+      width: 140px; }
+  .service {
+    padding: 50px 30px 40px; }
+    .service__content {
+      margin-top: 50px; }
+    .service__introduce-text {
+      font-size: 18px; }
+      .service__introduce-text .text-detail {
+        margin-top: 20px;
+        font-size: 14px; }
+    .service__image {
+      margin-top: 30px;
+      text-align: center; }
+      .service__image img {
+        width: 272px; }
+  .technology {
+    justify-content: space-between; }
+  .technology__item {
+    width: 100px; } }
+
+@media (min-width: 320px) and (max-width: 460px) and (min-width: 320px) and (max-width: 360px) {
+  .technology__item {
+    width: 80px; } }
+
+@media (min-width: 320px) and (max-width: 460px) {
+  .works {
+    padding: 50px 30px 40px; }
+    .works__content {
+      margin-top: 50px; }
+    .works__item {
+      position: relative;
+      padding: 24px;
+      border: 7px solid #000; } }
+    @media (min-width: 320px) and (max-width: 460px) and (min-width: 320px) and (max-width: 360px) {
+      .works__item {
+        padding: 14px; } }
+
+@media (min-width: 320px) and (max-width: 460px) {
+    .works__index {
+      position: absolute;
+      right: 45px;
+      top: 1em;
+      transform: rotate(-90deg); }
+    .works .num {
+      position: absolute;
+      right: 10px;
+      top: 16px;
+      font-size: 40px; } }
+    @media (min-width: 320px) and (max-width: 460px) and (min-width: 320px) and (max-width: 360px) {
+      .works .num {
+        top: 6px; } }
+
+@media (min-width: 320px) and (max-width: 460px) {
+    .works__table {
+      margin-top: 19px;
+      border-right: 1px solid #000;
+      border-left: 1px solid #000;
+      border-bottom: 1px solid #000; }
+    .works__table-head {
+      font-size: 11px;
+      padding: 14px 10px;
+      width: 98px;
+      background: #F4F4F4; } }
+    @media (min-width: 320px) and (max-width: 460px) and (min-width: 320px) and (max-width: 360px) {
+      .works__table-head {
+        padding: 14px 5px; } }
+
+@media (min-width: 320px) and (max-width: 460px) {
+    .works__table-col {
+      font-size: 1px;
+      padding-left: 15px; } }
+    @media (min-width: 320px) and (max-width: 460px) and (min-width: 320px) and (max-width: 360px) {
+      .works__table-col {
+        padding-left: 5px; } }
+
+@media (min-width: 320px) and (max-width: 460px) {
+    .works h2 {
+      font-size: 14px;
+      color: #fff;
+      background: #000;
+      width: 102px;
+      padding: 5px 8px; }
+    .works__text {
+      margin: 30px 0;
+      font-size: 20px; }
+    .works .text {
+      font-size: 16px;
+      margin-top: 16px; }
+  .member {
+    padding: 50px 30px 40px; }
+    .member__content {
+      margin-top: 50px; }
+    .member__item {
+      width: 100%;
+      display: flex;
+      margin-top: 48px; } }
+    @media (min-width: 320px) and (max-width: 460px) and (min-width: 320px) and (max-width: 470px) {
+      .member__item .child img {
+        width: 126.5px; } }
+
+@media (min-width: 320px) and (max-width: 460px) {
+    .member__img {
+      width: 100%; }
+    .member__detail {
+      margin-left: 5%; }
+    .member__name {
+      font-size: 24px; }
+    .member__nameen {
+      font-size: 10px;
+      margin-top: 10px; }
+    .member__text {
+      font-size: 14px;
+      margin-top: 25px; }
+  .corporate {
+    padding: 50px 30px 40px; }
+    .corporate__content {
+      margin-top: 50px;
+      font-size: 16px;
+      border-bottom: 1px solid #000; }
+    .corporate__item {
+      display: flex;
+      align-items: center;
+      padding: 22px 0;
+      border-top: 1px solid #000; }
+      .corporate__item .head {
+        width: 100px;
+        border-right: 1px solid #000; }
+      .corporate__item .content {
+        padding-left: 20px; }
+        .corporate__item .content.lh14 {
+          line-height: 1.4; }
+  .contact {
+    padding: 50px 30px 40px; }
+    .contact__content {
+      margin-top: 50px; }
+    .contact .field {
+      font-size: 16px;
+      border: 1px solid #000;
+      width: 100%;
+      height: 50px;
+      padding: 17px 20px;
+      box-sizing: border-box; } }
+
+.menber_item {
+  width: 100px; }
+
+@media (min-width: 461px) {
+  .navigation__items {
+    display: flex;
+    justify-content: center;
+    width: 100%; }
+  .main, .service, .works, .member, .corporate {
+    padding: 0 100px; }
+  .corporate {
+    padding: 68px 220px 75px; }
+    .corporate h1 {
+      width: 100%;
+      font-size: 70px;
+      margin: 0 auto; }
+      .corporate h1:after {
+        width: 65%; }
+    .corporate__content {
+      margin-top: 69px; }
+  .contact {
+    padding: 0 202px; }
+  .technology {
+    justify-content: flex-start; }
+    .technology__item {
+      width: 120px; }
+  .member ul {
+    display: flex;
+    justify-content: space-around; }
+    .member ul .member__item {
+      width: 200px;
+      height: 207px; }
+      .member ul .member__item .child img {
+        width: 110px; } }
