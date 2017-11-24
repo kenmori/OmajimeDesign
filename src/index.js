@@ -1,8 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import {render} from 'react-dom';
 import './index.css';
-import App from './App';
+import Root from './App';
+import { createStore } from 'redux';
+import {ohmajimeStore} from './reducers/reducers';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+let store = createStore(ohmajimeStore);
+
+render(<Root store={store} />, document.getElementById('root'));
 registerServiceWorker();
