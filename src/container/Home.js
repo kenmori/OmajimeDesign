@@ -15,16 +15,19 @@ import {add} from '../actionCreator/add';
 class Home extends Component {
     constructor(){
         super();
+        this.addWrap = this.addWrap.bind(this);
+    }
+    addWrap(){
+        this.props.addValue(3);
     }
     render(){
         const {value, addValue} = this.props;
-        console.log(value, addValue);
         return (
             <div className='omajime'>
                 <div id='js-menu' className='menu'></div>
                 <section className='main'>
                     <h1><img src={logo} alt='' width='200'/></h1>
-                <button onClick={addValue}>click</button>
+                <button onClick={this.addWrap}>click</button>
                 </section>
                 <section className='navigation pageHeader'>
                 <nav>
@@ -133,7 +136,7 @@ class Home extends Component {
 
 export default connect(
     state => ({value: state.value}),
-    dispatch => ({addValue: amont => dispatch(add(amont))})
+    dispatch => ({addValue: (amont) => dispatch(add(amont))})
 )(Home)
 
 
