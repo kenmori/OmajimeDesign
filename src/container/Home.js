@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {ToFormButton} from '../component/Button';
-import {OmajimeForm} from '../component/OmajimeForm';
+import OmajimeForm from '../component/OmajimeForm';
 import {ProductionExperience} from '../component/Experience';
 import {Member} from '../component/Member';
 import {Footer} from '../component/Footer';
@@ -16,6 +16,9 @@ class Home extends Component {
     constructor(){
         super();
         this.addWrap = this.addWrap.bind(this);
+    }
+    submit = (values) => {
+    console.log(values);
     }
     addWrap(){
         this.props.addValue(3);
@@ -125,7 +128,7 @@ class Home extends Component {
                     <h1>CONTACT</h1>
                     <div className='contact__content'>
                     <p>他にも多数実績がございますので、まずはお気軽にお問いあわせください</p>
-                    <OmajimeForm formApi='http://localhost:3000/profile'/>
+                    <OmajimeForm onSubmit={this.submit}/>
                     </div>
                 </section>
                 <Footer />
