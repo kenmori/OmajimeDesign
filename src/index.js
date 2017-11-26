@@ -3,10 +3,10 @@ import {render} from 'react-dom';
 import './index.css';
 import Root from './App';
 import { createStore } from 'redux';
-import {ohmajimeStore} from './reducers/reducers';
+import reducers from './reducers/reducers';
 import registerServiceWorker from './registerServiceWorker';
 
-let store = createStore(ohmajimeStore);
+let store = createStore(reducers);
 
 render(<Root store={store} />, document.getElementById('root'));
 registerServiceWorker();

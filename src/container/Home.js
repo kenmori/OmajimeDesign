@@ -7,19 +7,27 @@ import {Footer} from '../component/Footer';
 import '../scss/base/reset.css';
 import '../scss/pages/Home.css';
 import logo from '../svg/logo.svg';
+import {connect} from 'react-redux';
 import ReactSVG from 'react-svg';
 import { Link } from 'react-router-dom';
+import {add} from '../actionCreator/add';
 
-export class Home extends Component {
+class Home extends Component {
     constructor(){
         super();
+        this.addWrap = this.addWrap.bind(this);
+    }
+    addWrap(){
+        this.props.addValue(3);
     }
     render(){
+        const {value, addValue} = this.props;
         return (
             <div className='omajime'>
                 <div id='js-menu' className='menu'></div>
                 <section className='main'>
                     <h1><img src={logo} alt='' width='200'/></h1>
+                <button onClick={this.addWrap}>click</button>
                 </section>
                 <section className='navigation pageHeader'>
                 <nav>
@@ -125,5 +133,10 @@ export class Home extends Component {
         )
     }
 }
+
+export default connect(
+    state => ({value: state.value}),
+    dispatch => ({addValue: (amont) => dispatch(add(amont))})
+)(Home)
 
 
