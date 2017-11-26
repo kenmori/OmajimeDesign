@@ -5,8 +5,8 @@ import {axios} from 'axios';
 function* fetchUser(action) {
     try {
         const user = yield call(
-            axios.post(`/user`).then(function(response){
-                console.log(response);
+            axios.get(`http://localhost:3000/comments`).then(function(response){
+                console.log(response, 'response');
             }).catch(function(error){
                 console.log(error);
             }),
