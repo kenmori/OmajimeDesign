@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux';
-
+import {reducer as formReducer} from 'redux-form';
 export const valueReducer = (state = {value: 0}, action) => {
     console.log(action);
     switch(action.type){
@@ -11,5 +11,6 @@ export const valueReducer = (state = {value: 0}, action) => {
 }
 
 export default combineReducers({
-    value: valueReducer
+    value: valueReducer,
+    form: formReducer
 });
