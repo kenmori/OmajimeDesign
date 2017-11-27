@@ -10,7 +10,7 @@ import logo from '../svg/logo.svg';
 import {connect} from 'react-redux';
 import ReactSVG from 'react-svg';
 import { Link } from 'react-router-dom';
-import {add} from '../actionCreator/add';
+import {add} from '../actions/add';
 
 class Home extends Component {
     constructor(){

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {logo} from './logo.svg';
 import  Home from './container/Home';
-import  { About } from './container/About';
+import  About from './container/About';
 import  { Topics } from './container/Topics';
 import './scss/utils/helper.css';
 
