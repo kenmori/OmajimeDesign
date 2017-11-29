@@ -1,15 +1,22 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import {axios} from 'axios';
+import axios from 'axios';
+
+
+const getCurrentLocAPI = () => axios.get('http://localhost:3000/comments', {
+    headers: {
+        'Accept': 'application/json'
+    }
+}).then(response => response.data)
+.catch(err => {
+    throw err;
+});
+
 
 
 function* fetchUser(action) {
     try {
         const user = yield call(
-            axios.get(`http://localhost:3000/comments`).then(function(response){
-                console.log(response, 'response');
-            }).catch(function(error){
-                console.log(error);
-            }),
+            postCurrentLocAPI,
             action.payload.userId);
         yield put({type: "USER_FETCH_SUCCEEDED", user: user});
     } catch (e) {
