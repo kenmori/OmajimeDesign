@@ -1,13 +1,14 @@
 import React, {Component} from 'react'
 import {Field, reduxForm} from 'redux-form'
 import {FormLabel} from './FormLabel'
+import {request} from '.action/request'
 
 import 'object-assign'
 
 let OmajimeForm = props => {
     const { handleSubmit } = props
     return (
-        <form onSubmit={handleSubmit} id='form1'>
+        <form onSubmit={handleSubmit(request)} id='form1'>
         <div className='u-mt34'>
         <FormLabel labelName={'corporateName'} fieldName={'企業名'} isRequire={true} />
         <Field className='field u-mt15'component='input' type='text' name='corporateName' id='corporateName' />
