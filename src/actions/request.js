@@ -1,17 +1,13 @@
-
-export const request = (number) => {
-    axios.post('http://localhost:3000/comments', {
+import axios from 'axios';
+export const request = (data) => {
+    axios.post(`http://localhost:3000/comments/`, {
         headers: {
-            'Accept': 'application/json'
+            'Accept': 'application/json',
+            data
         }
     }).then((response) => {
         response.data
-}
-return {
-    type: 'USER_FETCH_REQUESTED',
-    payload: {userId: number}
-    }
-)
-.catch(err => {
+}).catch(err => {
     throw err;
 });
+}

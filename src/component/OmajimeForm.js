@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Field, reduxForm} from 'redux-form'
 import {FormLabel} from './FormLabel'
-import {request} from '.action/request'
+import {request} from './../actions/request'
 
 import 'object-assign'
 
