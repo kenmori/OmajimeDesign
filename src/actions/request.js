@@ -3,11 +3,11 @@ export const request = (data) => {
     axios.post(`http://localhost:3000/comments/`, {
         headers: {
             'Accept': 'application/json',
-            data
+            data: data
         }
     }).then((response) => {
-        response.data
+        return response.data;
 }).catch(err => {
-    throw err;
+        throw err;
 });
 }

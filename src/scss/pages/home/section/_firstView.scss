@@ -1,0 +1,35 @@
+@import "../../../utils/mixin.scss";
+
+@media (min-width: 320px) and (max-width: 460px) {
+	.firstView {
+		padding: 232px 30px 250px;
+		height: 100%;
+		margin: 0 auto;
+		h1 {
+			text-align: center;
+			p {
+				line-height: 2;
+				letter-spacing: 8px;
+			}
+			img {
+				width: 140px;
+				margin-top: 48px;
+			}
+		}
+	}
+}
+
+@media (min-width: 461px) {
+	.firstView {
+		margin: 0 9.3%;
+		@include h1size();
+		h1 {
+			@include h1marginTop();
+			padding: 223px 0 203px;
+			text-align: center;
+			img {
+				width: 150px;
+			}
+		}
+	}
+}

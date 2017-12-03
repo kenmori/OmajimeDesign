@@ -1,3 +1,15 @@
+@mixin arrow {
+	position: absolute;
+	content: '';
+	display: block;
+	background: #fff000;
+	transform: translate(-45deg);
+	border-left: 4px solid #000;
+	border-bottom: 4px solid #000;
+	transform: rotate(-45deg);
+	left: 50%;
+}
+
 .u-flex {
 	display: flex;
 }
@@ -12,9 +24,71 @@
 	border-top: 1px solid #000;
 }
 
+.u-mt10 {
+	margin-top: 10px;
+}
+.u-mt20 {
+	margin-top: 20px;
+}
+.u-mt30 {
+	margin-top: 30px;
+}
+.u-mb30 {
+	margin-bottom: 30px;
+}
 .u-mt15 {
 	margin-top: 15px;
 }
+.u-mt30 {
+	margin-top: 30px;
+}
 .u-mt34 {
 	margin-top: 34px;
+}
+.u-mt42 {
+	margin-top: 42px;
+}
+.u-mt44 {
+	margin-top: 44px;
+}
+.u-mt50 {
+	margin-top: 50px;
+}
+.u-mb80 {
+	margin-bottom: 80px;
+}
+.u-border {
+	height: 3px;
+	border-top: 2px solid #000;
+	border-bottom: 2px solid #000;
+	&--arrow {
+		position: relative;
+		&:before {
+			@include arrow();
+			width: 30px;
+			height: 30px;
+			margin-left: -15px;
+			top: -25px;
+		}
+	}
+	&--arrowPC {
+		position: relative;
+		&:before {
+			@include arrow();
+			width: 50px;
+			height: 50px;
+			margin-left: -25px;
+			top: -40px;
+		}
+	}
+}
+.u-borderW {
+	height: 5px;
+	border-top: 5px solid #fff;
+}
+.u-tac {
+	text-align: center;
+}
+.u-dib {
+	display: inline-block;
 }

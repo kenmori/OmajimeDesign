@@ -1,0 +1,13 @@
+.drowerBtn {
+	img {
+		z-index: 30;
+		width: 36px;
+		position: absolute;
+		padding: 10px;
+		left: 14px;
+		top: 14px;
+	}
+	&.hidden:after {
+		content: none;
+	}
+}
