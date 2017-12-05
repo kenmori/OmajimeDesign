@@ -1,0 +1,108 @@
+@import "../../../utils/mixin.scss";
+
+@media (min-width: 320px) and (max-width: 460px) {
+	.contact {
+		padding: 0 30px;
+		h1 {
+			@include h1text('お問い合わせ', '#fff', 'sp');
+		}
+		@include sectionBasePadding();
+		&__content {
+			@include contentStartMargin();
+		}
+		.mLabForm {
+			margin-top: 32px;
+		}
+		.form-row {
+			margin-top: 15px;
+			&:nth-child(1){
+				margin-top: 34px;
+			}
+			textarea {
+				height: 180px;
+			}
+		}
+		.field {
+			&:nth-child(1){
+				margin-top: 34px;
+			}
+			margin-top: 15px;
+			font-size: 16px;
+			border: 1px solid #000;
+			width: 100%;
+			height: 50px;
+			padding: 17px 20px;
+			box-sizing: border-box;
+		}
+	}
+}
+
+@media (min-width: 461px) {
+	.contact {
+		width: 100%;
+		padding: 68px 17.5%;
+		box-sizing: border-box;
+		@include h1size();
+		h1 {
+			@include h1text('お問い合わせ', '#fff', '');
+			margin-bottom: 40px;
+			&:after {
+				width: calc(6em - 2em)!important;
+			}
+		}
+		&__content {
+			> p {
+				text-align: center;
+			}
+		}
+		.mLabForm {
+			margin-top: 72px;
+		}
+		.label {
+			display: flex;
+			width: 340px;
+			height: 54px;
+		}
+		.form-row {
+			display: flex;
+			width: 100%;
+			margin-top: 30px;
+			textarea {
+				height: 180px;
+				padding-top: 10px;
+			}
+		}
+		.field {
+			width: 100%;
+			height: 54px;
+			margin-left: 20px;
+			padding-left: 20px;
+			font-size: 16px;
+		}
+	}
+}
+
+@media (min-width: 461px) and (max-width: 693px) {
+	.contact {
+		padding: 68px 5.5%;
+	}
+	.toFormBtn {
+		width: 100%;
+		a:before {
+			right: -10000px;
+		}
+	}
+	.require {
+		padding: 2px 5px;
+	}
+}
+
+@media (min-width: 461px) and (max-width:955px){
+	.contact h1 {
+		font-size: 45px!important;
+		font-size: 9vw!important;
+	}
+	.submitBtn button {
+		width: 100%;
+	}
+}

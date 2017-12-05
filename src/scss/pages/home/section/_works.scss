@@ -1,0 +1,172 @@
+@import "../../../utils/mixin.scss";
+
+//common
+.works {
+	background: #fff;
+}
+
+@media (min-width: 320px) and (max-width: 460px) {
+	.works {
+		padding: 0 30px;
+		h1 {
+			@include h1text('制作実績', '#fff000', 'sp');
+		}
+		&__item {
+			margin-bottom: 20px;
+		}
+		&__index {
+			right: 50px;
+		}
+		&__table-ex {
+			margin-top: 20px;
+			border-bottom: 1px solid #000;
+			.table {
+				border-top: 1px solid #000;
+				width: 100%;
+				display: table;
+				> div {
+					display: table-cell;
+					word-break: break-word;
+					vertical-align: middle;
+					padding: 5% 3%;
+					font-size: 11px;
+					&.table-item.left {
+						text-align: center;
+						//width: 19vw;
+						font-size: 11px;
+						background: #F4F4F4;
+					}
+					&.table-item.right {
+						font-size: 16px;
+					}
+				}
+			}
+		}
+		&__table-col {
+			font-size: 15px;
+		}
+	}
+	@include worksLabel();
+}
+
+@media (min-width: 461px) {
+	@include worksLabel();
+	.works {
+		margin-bottom: 60px;
+		h1 {
+			@include h1text('制作実績', '#fff000', '');
+			&:after {
+				width: calc(3.5em - 1em) !important;
+			}
+		}
+		@include h1size();
+		&__content {
+			margin: 50px 2%;
+		}
+		&__text {
+			text-align: center;
+		}
+		&__index {
+			right: 50px;
+		}
+		&__items {
+			display: flex;
+			padding: 0px 4.5%;
+			flex-wrap: wrap;
+			justify-content: space-around;
+			margin: 0 auto;
+		}
+		&__item {
+			width: 33%;
+			box-sizing: border-box;
+			&:nth-child(2) {
+				//margin: 0 10%;
+			}
+		}
+		&__table-ex {
+			margin-top: 20px;
+			border-bottom: 1px solid #000;
+			.table {
+				border-top: 1px solid #000;
+				box-sizing: border-box;
+				//display: flex;
+				display: table;
+				width: 100%;
+				align-items: center;
+				> div {
+					display: table-cell;
+					word-break: break-word;
+					vertical-align: middle;
+					padding: 5% 3%;
+					font-size: 1.1vw;
+					&.table-item.left {
+						text-align: center;
+						font-size: 11px;
+						width: 110px;
+						background: #F4F4F4;
+						padding: 0;
+						box-sizing: border-box;
+						width: 110px;
+					}
+					&.table-item.right {
+						font-size: 16px;
+						padding: 5% 3%;
+						&.one {
+							width: 100px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (min-width: 320px) and (max-width: 360px){
+	.works {
+		&__table-col {
+			font-size: 9px;
+		}
+		&__table-head {
+			width: 88px;
+		}
+	}
+}
+
+@media (min-width: 320px) and (max-width: 375px) {
+	.works {
+		.table {
+			> div {
+				width: 30px;
+				font-size: 11px;
+			}
+		}
+	}
+}
+
+@media (min-width: 376px) and (max-width: 413px) {
+	.works {
+		.table {
+			> div {
+				width: 40px;
+			}
+		}
+	}
+}
+@media (min-width: 461px) and (max-width:955px){
+	.works h1 {
+		font-size: 45px!important;
+		font-size: 9vw!important;
+	}
+}
+
+@media (min-width: 461px) and (max-width: 1282px) {
+	.works__items {
+		display: block;
+	}
+	.works__item {
+		width: 100%;
+		&:nth-child(2) {
+			margin: 20px 0;
+		}
+	}
+}

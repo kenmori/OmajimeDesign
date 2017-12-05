@@ -1,3 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
+import '../scss/components/footer.css';
 
-export const Footer = () => <footer>© 大真面目デザイン. All Rights Reserved..</footer>
+export const Footer = () => <footer>©oomajimedesign All Rights Reserved..</footer>

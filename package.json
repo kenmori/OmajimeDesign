@@ -1,15 +1,12 @@
 {
-  "name": "mlab",
+  "name": "omajimedesign",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://kenmori.github.io",
   "dependencies": {
-    "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "react-redux": "^5.0.6",
-    "react-responsive": "^3.0.0",
-    "react-scripts": "1.0.17",
-    "react-svg": "^2.2.2",
-    "redux": "^3.7.2"
+    "react-responsive": "^4.0.3",
+    "react-scripts": "1.0.17"
   },
   "scripts": {
     "start-js": "react-scripts start",
@@ -21,12 +18,13 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "axios": "^0.17.1",
     "node-sass-chokidar": "0.0.3",
     "npm-run-all": "^4.1.2",
-    "react-form": "^2.9.0",
+    "react": "^16.2.0",
+    "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
-    "redux-devtools": "^3.4.1",
-    "redux-form": "^7.1.2",
-    "redux-saga": "^0.16.0"
+    "redux": "^3.7.2",
+    "redux-form": "^7.1.2"
   }
 }

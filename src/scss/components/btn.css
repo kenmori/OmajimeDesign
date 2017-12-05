@@ -1,8 +1,48 @@
-.toFormBtn a {
-  display: block;
-  text-align: center;
-  padding: 29px;
-  background: #000;
-  color: #fff;
-  text-decoration: none;
-  font-size: 18px; }
+.toFormBtn, .submitBtn {
+  text-align: center; }
+  .toFormBtn button, .toFormBtn a, .submitBtn button, .submitBtn a {
+    display: inline-block;
+    background: #000;
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    width: 100%;
+    height: 70px;
+    line-height: 4; }
+    .toFormBtn button.arrow, .toFormBtn a.arrow, .submitBtn button.arrow, .submitBtn a.arrow {
+      position: relative; }
+      .toFormBtn button.arrow:before, .toFormBtn a.arrow:before, .submitBtn button.arrow:before, .submitBtn a.arrow:before {
+        content: '';
+        position: absolute;
+        border-bottom: 1px solid #fff;
+        border-right: 1px solid #fff;
+        width: 10px;
+        height: 10px;
+        top: 50%;
+        margin-top: -9px;
+        transform: rotate(45deg); }
+        @media (min-width: 320px) and (max-width: 360px) {
+          .toFormBtn button.arrow:before, .toFormBtn a.arrow:before, .submitBtn button.arrow:before, .submitBtn a.arrow:before {
+            right: 20px; } }
+        @media (min-width: 361px) {
+          .toFormBtn button.arrow:before, .toFormBtn a.arrow:before, .submitBtn button.arrow:before, .submitBtn a.arrow:before {
+            right: 20px; } }
+
+@media (min-width: 320px) and (max-width: 360px) {
+  .toFormBtn a, .toFormBtn button, .submitBtn a, .submitBtn button {
+    font-size: 15px;
+    line-height: 4.5; } }
+
+@media (min-width: 461px) {
+  .submitBtn button {
+    margin-top: 60px;
+    width: 400px; } }
+
+@media (min-width: 320px) and (max-width: 460px) {
+  .submitBtn button {
+    margin-top: 0px; } }
+
+@media (min-width: 461px) {
+  .toFormBtn {
+    width: 400px;
+    margin: 0 auto; } }

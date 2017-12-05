@@ -1,0 +1,57 @@
+@import "../../../utils/mixin.scss";
+
+//common
+.corporate {
+	background: #fff;
+}
+@include corporateTable()
+
+
+@media (min-width: 320px) and (max-width: 460px) {
+	.corporate {
+		padding: 0 30px 40px;
+		h1 {
+			@include h1text('会社概要', '#fff000', 'sp');
+		}
+	}
+}
+
+@media (min-width: 461px) {
+	.corporate {
+		padding: 68px 18.6% 75px;
+		box-sizing: border-box;
+		height: 100%;
+		h1 {
+			@include h1text('会社概要', '#fff000', '');
+			&:after {
+				width: calc(7em - 2em) !important;
+			}
+		}
+		@include h1size();
+		h1 {
+			margin: 0 auto 70px;
+			&:after {
+				width: 65%;
+			}
+		}
+		&__content {
+			margin-top: 69px;
+		}
+		&__item {
+			.head {
+				width: 130px;
+				padding-left: 20px;
+			}
+			.content {
+				padding-left: 50px;
+			}
+		}
+	}
+}
+
+@media (min-width: 461px) and (max-width:955px){
+	.corporate h1 {
+		font-size: 45px!important;
+		font-size: 9vw!important;
+	}
+}
