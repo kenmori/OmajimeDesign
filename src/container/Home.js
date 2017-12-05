@@ -6,7 +6,6 @@ import '../scss/pages/home/Home.css';
 import logo from '../svg/logo.svg';
 import tojiru from '../svg/tojiru.svg';
 import check from '../svg/check.svg';
-import zu from '../svg/zu.svg';
 import MediaQuery from 'react-responsive';
 import {MobileNavi, DesktopNavi} from '../component/Navi';
 import {ProductionExperience} from '../component/Experience';
@@ -45,7 +44,7 @@ export class Home extends Component {
                             <p className='u-mt20'>こちらもお気軽にご相談ください。
                             </p>
                         </div>
-                        <div className='service__image'><img src={zu} alt='zu' /></div>
+                        <div className='service__image'></div>
                     </div>
                     <div className='u-border u-mt42'></div>
                    <div className='service__suggestion'>

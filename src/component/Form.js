@@ -10,15 +10,15 @@ let Form  = props => {
       <form onSubmit={handleSubmit(request)} id='form1' className='mLabForm'>
         <div className='form-row'>
             <FormLabel labelName={'corporateName'} fieldName={'企業名'} isRequire={true} />
-            <Field className='field' component='input' type='text' placeholder='株式会社 m - Lab' name='corporateName' id='corporateName' />
+            <Field className='field' component='input' type='text' placeholder='大真面目デザイン' name='corporateName' id='corporateName' />
         </div>
         <div className='form-row'>
             <FormLabel labelName={'userName'} fieldName={'氏名'} isRequire={true} />
-            <Field className='field' component='input' type='text' placeholder='村上 進也' name='userName' id='userName' />
+            <Field className='field' component='input' type='text' placeholder='森田けんじ' name='userName' id='userName' />
         </div>
         <div className='form-row'>
             <FormLabel labelName={'userNameKana'} fieldName={'フリガナ'} isRequire={true} />
-            <Field className='field' component='input' type='input' placeholder='ムラカミ シンヤ' name='userNameKana' id='userNameKana' />
+            <Field className='field' component='input' type='input' placeholder='モリタケンジ' name='userNameKana' id='userNameKana' />
         </div>
         <div className='form-row'>
             <FormLabel labelName={'mailAddress'} fieldName={'メールアドレス'} isRequire={true} />
