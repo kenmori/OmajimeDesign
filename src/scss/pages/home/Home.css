@@ -1017,3 +1017,13 @@
     font-size: 9vw !important; }
   .submitBtn button {
     width: 100%; } }
+
+.submitBtn {
+  position: relative;
+  top: 100px; }
+
+.error {
+  color: red;
+  margin-left: 20px;
+  padding: 5px 0 5px 0;
+  display: inline-block; }
