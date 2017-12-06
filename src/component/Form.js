@@ -1,16 +1,19 @@
 import React from 'react';
 import { Field, reduxForm} from 'redux-form';
 import {FormLabel} from './FormLabel';
-import {request} from './../actions/request'
+import {submitForm} from './../actions/request'
 import 'object-assign';
 
+function submit(value, dispatch){
+    dispatch(submitForm(value));
+}
 let Form  = props => {
-    const { handleSubmit } = props;
+    const { handleSubmit, pristine, submitting } = props;
     return (
-      <form onSubmit={handleSubmit(request)} id='form1' className='mLabForm'>
+      <form onSubmit={handleSubmit(submit)} id='form1' className='mLabForm'>
         <div className='form-row'>
             <FormLabel labelName={'corporateName'} fieldName={'企業名'} isRequire={true} />
-            <Field className='field' component='input' type='text' placeholder='大真面目デザイン' name='corporateName' id='corporateName' />
+            <Field className='field' component='input' type='text' placeholder='' name='corporateName' id='corporateName' />
         </div>
         <div className='form-row'>
             <FormLabel labelName={'userName'} fieldName={'氏名'} isRequire={true} />
@@ -32,7 +35,7 @@ let Form  = props => {
             <FormLabel labelName={'content'} fieldName={'お問い合わせ内容'} isRequire={true} />
             <Field className='field' component='textarea' type='text' placeholder='こちらにお問い合わせ内容をご記入ください。' name='content' id='content' />
         </div>
-        <div className='submitBtn u-mt30 u-mb80'><button type='submit'>お問い合わせする</button></div>
+        <div className='submitBtn u-mt30 u-mb80'><button type='submit' disabled={submitting | pristine }>お問い合わせする</button></div>
         </form>
     )
 }

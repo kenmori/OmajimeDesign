@@ -1,13 +1,14 @@
-import axios from 'axios';
-export const request = (data) => {
-    axios.post(`http://localhost:3000/comments/`, {
-        headers: {
-            'Accept': 'application/json',
-            data: data
-        }
-    }).then((response) => {
-        return response.data;
-}).catch(err => {
-        throw err;
-});
+import mirrorCreator from 'mirror-creator';
+
+const actionTypes = mirrorCreator([
+   'SUBMIT_FORM',
+]);
+
+export default actionTypes;
+
+export function submitForm(params) {
+    return {
+        type: actionTypes.SUBMIT_FORM,
+        payload: { params }
+    }
 }

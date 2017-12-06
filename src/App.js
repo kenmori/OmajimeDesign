@@ -5,9 +5,16 @@ import { Topics } from './container/Topics';
 import './scss/utils/helper.css';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import createSagaMiddleware from 'redux-saga';
 import reducers from './reducers/reducers';
-let store = createStore(reducers);
+import { rootSaga } from './sagas/sagas';
+
+
+const sagaMiddlware = createSagaMiddleware();
+let store = createStore(reducers, applyMiddleware(sagaMiddlware));
+
+sagaMiddlware.run(rootSaga);
 
 const App = () => (
     <Provider store={store}>
