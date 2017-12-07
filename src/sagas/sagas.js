@@ -1,35 +1,44 @@
 
-import { put, call, fork, take } from 'redux-saga/effects';
+import { takeEvery, call, fork, put } from 'redux-saga/effects';
 import axios from 'axios';
 import {startSubmit, stopSubmit, reset} from 'redux-form';
-import actionTypes from '../actions/request';
+import actionTypes from '../actions/actionTypes';
 
-export function formPost(params) {
- return axios.post('http://localhost:3000/comments', params).then((res) => {
-    return { data: res.data };
- }, (error) => {
-    return { error };
- });
+function submitToServer(data) {
+    return fetch('http://localhost:3000/comments', {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        }).then(response => response.json())
+        .catch(error => console.log(error));
 }
 
-function* handleSubmitForm() {
-    for (;;) {
-        const action = yield take(actionTypes.SUBMIT_FORM);
-        const {params} = action.payload;
-        yield put(startSubmit('example'));
-        const { data, error } = yield call(formPost, params);
-        if (data && !error) {
-            // Action on success
-            yield put(stopSubmit('example'));
-            console.log(data);
-            yield put(reset('example'));
-        } else {
-            // Action on failure
-            yield put(stopSubmit('example', error));
-        }
+
+function* callSubmit(action) {
+
+    console.log('callSubmit', action)
+    yield put(startSubmit('contact'));
+    let errors = {};
+    const result = yield call(submitToServer, action.data);
+    console.log(result);
+    if (result.errors) {
+        yield put({ type: 'REQUEST_FAILED', errors: result.errors});
+    } else {
+        yield put({ type: 'REQUEST_SUCCESSFULL'});
     }
+    console.log('start submit');
+    yield put(stopSubmit('contact', errors));
+}
+
+function* submitSaga() {
+    console.log('submitSaga')
+    yield takeEvery('REQUEST_SUBMIT', callSubmit);
 }
 
 export function* rootSaga() {
-    yield fork(handleSubmitForm);
+    yield [
+        fork(submitSaga),
+    ]
 }

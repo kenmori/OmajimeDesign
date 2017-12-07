@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {ToFormButton} from '../component/Button';
-import Form from '../component/Form';
+import MyForm from '../component/MyForm/index';
 import '../scss/base/reset.css';
 import '../scss/pages/home/Home.css';
 import logo from '../svg/logo.svg';
@@ -12,9 +12,6 @@ import {ProductionExperience} from '../component/Experience';
 import {Footer} from '../component/Footer';
 import {connect} from 'react-redux';
 export class Home extends Component {
-    submit = (values) => {
-        console.log(values);
-    }
     render(){
         return (
             <div className='mlabo'>
@@ -119,7 +116,7 @@ export class Home extends Component {
                     <h1>CONTACT</h1>
                     <div className='contact__content'>
                         <p>他にも多数実績がございますので、<br/>まずはお気軽にお問いあわせください</p>
-                        <Form onSubmit={this.submit}/>
+                        <MyForm />
                     </div>
                 </section>
                 <Footer />
