@@ -10,7 +10,6 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-    console.log()
     return bindActionCreators(actionCreators, dispatch);
 }
 
