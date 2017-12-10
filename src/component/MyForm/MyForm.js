@@ -56,15 +56,14 @@ const submit = ({corporateName = '', userName='', userNameKana='', mailAddress='
 
 const renderFieldTextarea = ({type, placeholder,label, input, textarea, meta: {touched, error}}) => (
 <span className='field'>
-    <label>{label}</label>
-    <textarea {...input} type={type} className='field' placeholder={placeholder} />
+    <textarea {...input} type={type} className='' placeholder={placeholder} />
     {touched && error && <span className='error'>{error}</span>}
 </span>
 );
 
 const renderField = ({type,placeholder,  label, input,  meta: {touched, error}}) => (
 <span className='field'>
-    <input {...input} type={type} className='field' placeholder={placeholder} />
+    <input {...input} type={type} className='' placeholder={placeholder} />
     {touched && error && <span className='error'>{error}</span>}
 </span>
 );
