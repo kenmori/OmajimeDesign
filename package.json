@@ -4,9 +4,11 @@
   "private": true,
   "homepage": "http://kenmori.github.io",
   "dependencies": {
+    "mirror-creator": "^1.1.0",
     "react": "^16.2.0",
     "react-dom": "^16.0.0",
     "react-responsive": "^4.0.3",
+    "react-router-redux": "^4.0.8",
     "react-scripts": "1.0.17"
   },
   "scripts": {
