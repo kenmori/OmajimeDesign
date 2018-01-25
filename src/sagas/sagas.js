@@ -1,6 +1,5 @@
 
 import { takeEvery, takeLatest, call, fork, put } from 'redux-saga/effects';
-import axios from 'axios';
 import {startSubmit, stopSubmit, reset} from 'redux-form';
 import actionTypes from '../actions/actionTypes';
 
@@ -17,7 +16,6 @@ function submitToServer(data) {
 
 
 function* callSubmit(action) {
-
     console.log('callSubmit', action)
     yield put(startSubmit('contact'));
     let errors = {};
