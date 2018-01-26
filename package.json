@@ -20,11 +20,12 @@
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "start": "npm-run-all -p watch-css start-js",
     "build": "npm run build-css && react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "jest",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
     "axios": "^0.17.1",
+    "flow-bin": "^0.64.0",
     "jest": "^22.1.4",
     "node-sass-chokidar": "0.0.3",
     "npm-run-all": "^4.1.2",
