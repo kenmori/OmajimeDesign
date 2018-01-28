@@ -6,7 +6,7 @@ export const topickReducer = (state = { count: 0 } , action) => {
     switch(action.type){
         case 'increment':
             return {
-                count : state.count + 1
+                count : state.count + action.payload
             }
             break;
         default:
