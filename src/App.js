@@ -11,10 +11,17 @@ import { browseerHistory } from 'react-router';
 import createSagaMiddleware from 'redux-saga';
 import reducers from './reducers/reducers';
 import { rootSaga } from './sagas/sagas';
+import { composeWithDevTools } from 'redux-devtools-extension';
+
+
 
 const defaultState = {};
 const sagaMiddlware = createSagaMiddleware();
-let store = createStore(reducers, defaultState, applyMiddleware(sagaMiddlware));
+let store = createStore(
+    reducers,
+    defaultState,
+    composeWithDevTools(applyMiddleware(sagaMiddlware))
+);
 
 sagaMiddlware.run(rootSaga);
 
