@@ -11,7 +11,9 @@
     "react-dom": "^16.2.0",
     "react-responsive": "^4.0.3",
     "react-router-redux": "^4.0.8",
-    "react-scripts": "1.0.17"
+    "react-scripts": "1.0.17",
+    "recompose": "^0.26.0",
+    "redux-actions": "^2.2.1"
   },
   "scripts": {
     "storybook": "start-storybook -p 9001 -c .storybook",
