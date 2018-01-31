@@ -25,7 +25,7 @@ const mapStateToProps = (state) => ({
     })
 
 const mapDispatchToProps = (dispatch) => ({
-    increment(){ dispatch(increment()) }
+    increment(){ dispatch(increment(1)) }
 });
 export const Topics = connect(mapStateToProps, mapDispatchToProps)(enhance(TopicsPage));
 
