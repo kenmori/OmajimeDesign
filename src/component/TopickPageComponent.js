@@ -1,6 +1,5 @@
 import React from 'react';
-export const TopickPageComponent = ({topick, increment}) =>( <div>
-    now count is :{topick}
-    <button onClick={ increment }>increment</button>
+export const TopickPageComponent = ({increment}) =>( <div>
+    <button onClick={ () => increment(1) }>increment</button>
 </div>
 )

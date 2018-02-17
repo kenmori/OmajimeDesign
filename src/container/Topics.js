@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import {defaultProps, compose, withProps, flattenProp, renameProp } from 'recompose';
 import {TopickPageComponent} from '../component/TopickPageComponent';
 import {connect} from 'react-redux';
-import {increment} from '../actions/TopicsPageAction';
+import {increment, decrement} from '../actions/TopicsPageAction';
 const enhance = compose(
     withProps({
         object: {a: 'a', b: 'b'},
@@ -11,11 +11,12 @@ const enhance = compose(
     flattenProp('object')
 )
 
-const TopicsPage = ({ c, count, increment }) => {
+const TopicsPage = ({ c, count, increment, decrement }) => {
     return (
         <Fragment>
-            <TopickPageComponent topick={count} increment={increment} />
-            <button></button>
+            {count}
+            <TopickPageComponent increment={increment} />
+            <button onClick={()=> decrement(1)}>decrement</button>
         </Fragment>
     )
 }
@@ -25,7 +26,8 @@ const mapStateToProps = (state) => ({
     })
 
 const mapDispatchToProps = (dispatch) => ({
-    increment(){ dispatch(increment(1)) }
+    decrement(value){ dispatch(decrement(value)) },
+    increment(value){ dispatch(increment(value)) }
 });
 export const Topics = connect(mapStateToProps, mapDispatchToProps)(enhance(TopicsPage));
 
