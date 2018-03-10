@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#FFF100">
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" type="text/css" />
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta property="og:title" content="">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+
+    <meta property="og:image" content="">
+    <meta property="og:site_name" content="">
+    <meta property="og:description" content="">
+    <script type="text/babel" src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.5.1/snap.svg-min.js"></script>
+    <style>
+      /*初期レンダリング対策*/
+      html {position: relative;}
+      body {background: #fff100;margin: 0;padding: 0;letter-spacing: 1.4px; font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', '游ゴシック  Medium', meiryo, sans-serif!important;}
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.js"
+            integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+            crossorigin="anonymous"></script>
+    <script>
+
+      (function($){
+        $(document).ready(function(){
+          var  animationSliderClose = function (){
+            $('.navigation').removeClass('on');
+            $('#js-menu').css('display', 'block');
+            $('html').css('position', 'initial');
+            $('body, html').css('overflow','auto');
+            $('body').css('height', 'auto');
+            $('#js-menu').removeClass('hidden');
+            $('#js-menu').addClass('button');
+            isOpen = false;
+          }
+          var offsetY = 0;
+          // スクロールにかかる時間
+          var time = 500;
+
+          // ページ内リンクのみを取得
+          $('a[href^=\\#]').click(function () {
+            $('html').css('position', 'initial');
+            // 移動先となる要素を取得
+            var target = $(this.hash);
+            if (!target.length) return;
+            // 移動先となる値
+            var targetY = target.offset().top + offsetY;
+            // スクロールアニメーション
+            $('html,body').animate({scrollTop: targetY}, time, 'swing');
+            // ハッシュ書き換えとく
+            window.history.pushState(null, null, this.hash);
+            // デフォルトの処理はキャンセル
+            animationSliderClose();
+            return false;
+          });
+
+          var isOpen = false;
+          $('#js-menu,.menuClose').on('click', function(){
+            if(!isOpen){
+              isOpen = true;
+              $('.navigation').addClass('on');
+              $('body').css('overflow', 'hidden');
+              $('#js-menu').css('display', 'none');
+              $('body').css('height', '100%');
+              $('html').css('height', '100%');
+              $('html').css('position', 'fixed');
+              $('html').css('overflow','hidden');
+              $('.drowerBtn').addClass('hidden');
+              $('.drowerBtn').removeClass('button');
+            } else {
+              isOpen = false;
+              $('.navigation').addClass('off');
+              $('html').css('position', 'initial');
+              $('#js-menu').css('display', 'block');
+              $('body', 'html').css('overflow','auto');
+              $('body').css('height', 'auto');
+              $('#js-menu').removeClass('hidden');
+              $('#js-menu').addClass('button');
+            }
+          });
+
+
+          $('.firstView,.service,.works,.member, .menuClose').on('click', function(){
+            animationSliderClose();
+          });
+
+          function resize() {
+            if($('.navigation').hasClass('on')){
+              $('.navigation').removeClass('on');
+              $('body').css('overflow-y','scroll');
+            }
+          }
+          window.onresize = resize;
+        });
+      })($);
+    </script>
+  </body>
+</html>
