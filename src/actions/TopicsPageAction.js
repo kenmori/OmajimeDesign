@@ -1,11 +1,5 @@
 import { createAction } from 'redux-actions';
-
-
-
-export const increment = createAction('increment');
-export const decrement = (value) => {
-    return {
-        type:'decrement',
-        value: value - 1
-    }
-}
+export const INCREMENT = 'INCREMENT';
+export const increment = createAction('INCREMENT');
+export const DECREMENT = 'DECREMENT';
+export const decrement = createAction('DECREMENT');
