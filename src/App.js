@@ -1,7 +1,10 @@
 import React  from 'react';
 import { Home } from './container/Home';
 import { About } from './container/About';
+import  Calendar  from './container/Calendar';
+import  DragDropContext  from './container/CalendarDragAndDrop';
 import { Topics } from './container/Topics';
+import { Form } from './container/Form';
 import './scss/utils/helper.css';
 import { Provider } from 'react-redux';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
@@ -37,6 +40,9 @@ const App = () => (
          <Route exact path='/' component={Home} />
           <Route exact path='/about' component={About} />
           <Route exact path='/topics' component={Topics} />
+          <Route exact path='/form' component={Form} />
+          <Route exact path='/calendar' component={Calendar} />
+          <Route exact path='/calendardnd' component={DragDropContext} />
         </div>
     </BrowserRouter>
     </Provider>
