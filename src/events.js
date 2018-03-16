@@ -1,41 +1,45 @@
 export default [
   {
     id: 0,
-    title: 'All Day Event very long title',
+    title: '私用',
     allDay: true,
     start: new Date(2018, 3, 0),
     end: new Date(2018, 3, 1),
+      isComp: true
   },
   {
     id: 1,
-    title: 'Long Event',
-    start: new Date(2018, 3, 15),
-    end: new Date(2018, 3, 15),
+    title: '私用',
+    start: new Date(2018, 3, 16),
+    end: new Date(2018, 3, 18),
+      isComp: true
   },
 
   {
     id: 2,
-    title: 'DTS STARTS',
+    title: '私用',
     start: new Date(2018, 3, 15, 0, 0, 0),
-    end: new Date(2018, 3, 20, 0, 0, 0),
+    end: new Date(2018, 3, 16, 0, 0, 0),
+      isComp: true
   },
 
   {
     id: 3,
-    title: 'DTS ENDS',
-    start: new Date(2018, 10, 6, 0, 0, 0),
-    end: new Date(2018, 10, 13, 0, 0, 0),
+    title: '私用',
+    start: new Date(2018, 3, 16, 0, 0, 0),
+    end: new Date(2018, 3, 16, 0, 0, 0),
+      isComp: false
   },
 
   {
     id: 4,
-    title: 'Some Event',
+    title: '私用',
     start: new Date(2018, 3, 9, 0, 0, 0),
     end: new Date(2018, 3, 9, 0, 0, 0),
   },
   {
     id: 5,
-    title: 'Conference',
+    title: '私用',
     start: new Date(2015, 3, 11),
     end: new Date(2015, 3, 13),
     desc: 'Big conference for important people',

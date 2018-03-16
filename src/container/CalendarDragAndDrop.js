@@ -9,7 +9,8 @@ import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop'
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.css'
 import Modal from 'react-modal'
 import {closeModal, openModal} from '../actions/modalAction';
-import {moveInterViewFrame} from '../actions/interviewFrameAction';
+import {requrestPostInterviewFrame,setSelectEvent, moveInterViewFrame,requestInit} from '../actions/interviewFrameAction';
+import {reduxForm, Field} from 'redux-form'
 
 //pageを開けた際にapiコールして最新のcardが揃う
 //
@@ -24,12 +25,79 @@ import {moveInterViewFrame} from '../actions/interviewFrameAction';
 //登録したものを編集できるように出すモーダルを分ける
 //編集できる
 //
+//
+//
+//選択したslotの時間を反映させる
+//
+//
+const RemoteButton = ({dispatch}) => (
+    <button onClick={() => dispatch(requrestPostInterviewFrame())}>確定する</button>
+)
+const wrapHandleSubmit = (values, dispatch) => {
+    //return dispatch(requrestPostInterviewFrame(values));
+};
+let CreateForm = ({dispatch, handleSubmit, pristine, reset, submitting}) => (
+    <div>
+        <h3>Create</h3>
+    <form onSubmit={handleSubmit(wrapHandleSubmit)}>
+            <Field name="mensestukan" placeholder="面談官を選択してください" component="select">
+                <option />
+                <option value="面接官1">面接官1</option>
+                <option value="面接官2">面接官2</option>
+                <option value="面接官3">面接官3</option>
+                <option value="面接官4">面接官4</option>
+            </Field>
+            <br/>
+            <Field name="mensestukijou" placeholder="面談会場を選択してください" component="select">
+                <option />
+                <option value="会場1">会場1</option>
+                <option value="会場2">会場2</option>
+                <option value="会場3">会場3</option>
+                <option value="会場4">会場4</option>
+            </Field>
+            <br/>
+            <RemoteButton dispatch={dispatch} />
+            {/*<button type="submit" disabled={pristine || submitting}>
+                確定する
+            </button>*/}
+            <hr/>
+            <div>
+                preview
+            </div>
+        </form>
+    </div>
+
+)
+
+
+
+let EditForm = ({handleSubmit, pristine, reset, submitting}) => (
+    <div>
+        <h3>Edit</h3>
+        <form onSubmit={handleSubmit}>
+            <Field name="" component="input" type='text' />
+        </form>
+    </div>
+)
+
+
+CreateForm = reduxForm({
+    form : 'createForm',
+    onSubmit: wrapHandleSubmit
+})(CreateForm)
+
+ EditForm = reduxForm({
+    form : 'editForm'
+})(EditForm)
 
 const DragAndDropCalendar = withDragAndDrop(BigCalendar)
 class Dnd extends React.Component {
     constructor(props){
         super(props)
     }
+ componentDidMount(){
+        this.props.dispatch(requestInit());
+   }
   render() {
     return (
         <React.Fragment>
@@ -40,10 +108,10 @@ class Dnd extends React.Component {
             this.props.moveEvent({event, start, end}, this.props.dispatch)}
         }
         onSelectEvent={event =>{
-            this.props.openModalDispatch({showModal: true})
+            this.props.openModalDispatch(event);
         }}
         onSelectSlot={slotInfo => {
-             this.props.openModalDispatch({showModal: true,  slotInfo})
+             this.props.openModalDispatch(slotInfo)
             }
           }
         resizable
@@ -51,8 +119,12 @@ class Dnd extends React.Component {
         defaultView="week"
         defaultDate={new Date(2018, 3, 15)}
       />
-    <Modal isOpen={this.props.showModal} onRequestClose={this.props.closeModalDispatch}>
-        {this.props.isComp ? <div>Comp</div>: <div>not Comp</div>}
+      <Modal {...this.props}
+          isOpen={this.props.showModal}
+          onRequestClose={this.props.closeModalDispatch}
+          onAfterOpen={this.props.handleAfterOpenFunc}
+      >
+        {this.props.isComp ? <div><EditForm {...this.props} /></div>: <div><CreateForm {...this.props} />not Comp</div>}
     </Modal>
       </React.Fragment>
     )
@@ -68,11 +140,15 @@ const mapDispatchToProps = (dispatch) => {
         openModalDispatch(){
             dispatch(openModal({showModal: true}))
         },
+        handleAfterOpenFunc(){
+            console.log("open")
+        },
         dispatch
     }
 }
 
 const mapStateToProps = (state, props) => {
+    console.log(state, 'mapStateProps');
     return  {
         showModal: state.modal.showModal,
         isComp: state.interviewFrame.events[0].isComp,
@@ -96,7 +172,6 @@ const margeToProps = (state, dispatch, ownProps) => {
             dispatch(moveInterViewFrame({events: nextEvents}));
         },
          resizeEvent(resizeType, { event, start, end }){
-             debugger;
             const { events } = state
             const nextEvents = events.map(existingEvent => {
               return existingEvent.id == event.id

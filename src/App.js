@@ -12,7 +12,7 @@ import { BrowserRouter,  Router, Route } from 'react-router-dom';
 import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import reducers from './reducers/reducers';
-import { rootSaga } from './sagas/sagas';
+import rootSaga from './sagas';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 const defaultState = {};
