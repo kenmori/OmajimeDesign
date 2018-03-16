@@ -1,5 +1,5 @@
 
-import { takeEvery, takeLatest, call, fork, put } from 'redux-saga/effects';
+import {all, takeEvery, takeLatest, call, fork, put } from 'redux-saga/effects';
 import {startSubmit, stopSubmit, reset} from 'redux-form';
 import actionTypes from '../actions/actionTypes';
 
@@ -31,8 +31,8 @@ function* submitSaga() {
     yield takeLatest('REQUEST_SUBMIT', callSubmit);
 }
 
-export function* rootSaga() {
-    yield [
+export default function* rootSaga() {
+    yield all([
         fork(submitSaga),
-    ]
+    ])
 }
