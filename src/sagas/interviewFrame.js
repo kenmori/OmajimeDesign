@@ -20,40 +20,43 @@ return fetch('http://localhost:3004/events', {
         method: 'GET',
         headers: {
             'Content-type': 'application/json',
-        }
+        },
+        credentials: 'same-origin',
 }).then(response => {
-    console.log(response, "response");
     return response.json()})
     .catch(error => console.log(error));
 }
 function putToServer(data) {
-    console.log(data, "put start")
-    return fetch('http://localhost:3004/events/', {
+    return fetch('http://localhost:3004/events', {
         method: 'PUT',
         headers: {
             'Content-type': 'application/json',
         },
+        credentials: 'same-origin',
         body: JSON.stringify(data),
 }).then(response => {
-    console.log(response, "post");
     return response.json()
 })
     .catch(error => console.log(error));
-}
+    }
 function* interviewFrame(){
+    while(true){
     const action = yield take(REQUEST_INIT);
+        debugger;
     console.log("fafa ii ")
     const result = yield call(getToServer)
     console.log(result, 'saga init')
     if(!result.errors){
         yield put(succcessAllinterviewFrame(result));
     } else {
+        }
     }
 }
 function* moveInterviewFrame(){
+    while(true){
     const action = yield take(MOVE_INTERVIEWFRAME);
     console.log(action, "action")
-    const result = yield call(putToServer, action.payload.events[0])
+    const result = yield call(putToServer, action.payload)
     if(!result.errors){
         console.log(result, "put")
         yield put(successInterviewFrame(result));
@@ -61,8 +64,8 @@ function* moveInterviewFrame(){
         console.log("failer")
         yield put('FAILEAR_INTERVIEWFRAME');
     }
+    }
 }
-
 //POST
 function* requestCreateInterview(){
     const action = yield take(REQUEST_POST_INTERVIEWFRAME);

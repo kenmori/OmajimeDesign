@@ -12,9 +12,11 @@ import {closeModal, openModal} from '../actions/modalAction';
 import {requrestPostInterviewFrame,setSelectEvent, moveInterViewFrame,requestInit} from '../actions/interviewFrameAction';
 import {reduxForm, Field} from 'redux-form'
 
+
 //pageを開けた際にapiコールして最新のcardが揃う
 //
-//modalを開いたらcardInfoが表示される
+//modalを開いたらcardInfo(時間)が表示される
+//
 //編集ができる
 //更新ができる
 //modal内がrenderされてが更新される
@@ -111,6 +113,7 @@ class Dnd extends React.Component {
             this.props.openModalDispatch(event);
         }}
         onSelectSlot={slotInfo => {
+            debugger;
              this.props.openModalDispatch(slotInfo)
             }
           }
@@ -137,7 +140,7 @@ const mapDispatchToProps = (dispatch) => {
         closeModalDispatch(){
             dispatch(closeModal({showModal:false}))
         },
-        openModalDispatch(){
+        openModalDispatch(slot){
             dispatch(openModal({showModal: true}))
         },
         handleAfterOpenFunc(){
@@ -147,12 +150,20 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
+const convertEventDate = (state) => {
+   const eled =  state.interviewFrame.events.map((el, i)=>{
+       el.start = new Date(el.start)
+        el.end = new Date(el.end);
+       return el;
+    })
+    return eled;
+}
 const mapStateToProps = (state, props) => {
     console.log(state, 'mapStateProps');
     return  {
         showModal: state.modal.showModal,
-        isComp: state.interviewFrame.events[0].isComp,
-        events: state.interviewFrame.events
+        isComp: state.interviewFrame.events[0] ? state.interviewFrame.events[0].isComp: false,
+        events: convertEventDate(state)
     }
 }
 
@@ -169,7 +180,11 @@ const margeToProps = (state, dispatch, ownProps) => {
             //            this.setState({
             // events: nextEvents,
             //})
-            dispatch(moveInterViewFrame({events: nextEvents}));
+            //dispatch(moveInterViewFrame({events: nextEvents}));
+            //APIの構造に合わせて渡す更新型を変更する
+            //check
+            debugger;
+            dispatch(moveInterViewFrame(nextEvents));
         },
          resizeEvent(resizeType, { event, start, end }){
             const { events } = state
