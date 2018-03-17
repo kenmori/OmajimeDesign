@@ -1,5 +1,7 @@
 import {handleActions} from 'redux-actions'
+import {update} from 'immutability-helper'
 import {SUCCESS_ALLINTERVIEWFRAME, SUCCESS_INTERVIEWFRAME, REQUEST_INTERVIEWFRAME, MOVE_INTERVIEWFRAME, REQUEST_INIT} from '../actions/interviewFrameAction'
+
 
 const initialValues = {
   events : [{
@@ -34,15 +36,15 @@ export const interviewFrameReducer = handleActions({
     },
     [REQUEST_INIT]: (state, action) => {
         console.log(state, action.payload, "request init")
+        debugger;
         return {
         ...state,
         }
     },
     [SUCCESS_ALLINTERVIEWFRAME]: (state, action) => {
         console.log(state, action.payload, "request success")
-        return {
-        ...state,
-        }
+        var o =  Object.assign({}, state, {events: action.payload})
+        return o
     }
 }, initialValues)
 
