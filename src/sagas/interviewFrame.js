@@ -2,7 +2,6 @@ import {all, fork, take, call, put} from 'redux-saga/effects';
 import {REQUEST_POST_INTERVIEWFRAME, MOVE_INTERVIEWFRAME,REQUEST_INIT,succcessAllinterviewFrame, requestInit, successInterviewFrame} from '../actions/interviewFrameAction'
 
 function submitToServer(data) {
-    console.log(data)
 return fetch('http://localhost:3004/events', {
         method: 'POST',
         headers: {
@@ -10,7 +9,6 @@ return fetch('http://localhost:3004/events', {
         },
         body: JSON.stringify(data),
 }).then(response => {
-    console.log(response, "post");
     return response.json()
 })
     .catch(error => console.log(error));
@@ -42,10 +40,7 @@ function putToServer(data) {
 function* interviewFrame(){
     while(true){
     const action = yield take(REQUEST_INIT);
-        debugger;
-    console.log("fafa ii ")
     const result = yield call(getToServer)
-    console.log(result, 'saga init')
     if(!result.errors){
         yield put(succcessAllinterviewFrame(result));
     } else {
@@ -55,13 +50,10 @@ function* interviewFrame(){
 function* moveInterviewFrame(){
     while(true){
     const action = yield take(MOVE_INTERVIEWFRAME);
-    console.log(action, "action")
     const result = yield call(putToServer, action.payload)
     if(!result.errors){
-        console.log(result, "put")
         yield put(successInterviewFrame(result));
     } else {
-        console.log("failer")
         yield put('FAILEAR_INTERVIEWFRAME');
     }
     }

@@ -9,10 +9,15 @@ import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop'
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.css'
 import Modal from 'react-modal'
 import {closeModal, openModal} from '../actions/modalAction';
-import {requrestPostInterviewFrame,setSelectEvent, moveInterViewFrame,requestInit} from '../actions/interviewFrameAction';
+import {onSelectedSlot, requrestPostInterviewFrame,setSelectEvent, moveInterViewFrame,requestInit} from '../actions/interviewFrameAction';
 import {reduxForm, Field} from 'redux-form'
+import * as moment from 'moment'
+//import {createTime} from '../utils'
 
 
+//postしたらしたのカレンダーが更新されている
+//postしたらmodalが閉じる
+//
 //pageを開けた際にapiコールして最新のcardが揃う
 //
 //modalを開いたらcardInfo(時間)が表示される
@@ -32,16 +37,54 @@ import {reduxForm, Field} from 'redux-form'
 //選択したslotの時間を反映させる
 //
 //
-const RemoteButton = ({dispatch}) => (
-    <button onClick={() => dispatch(requrestPostInterviewFrame())}>確定する</button>
-)
-const wrapHandleSubmit = (values, dispatch) => {
-    //return dispatch(requrestPostInterviewFrame(values));
+//const RemoteButton = ({dispatch}) => {
+//    return (
+//    <button onClick={() => dispatch(requrestPostInterviewFrame())}>確定する</button>
+//)}
+//
+const renderField = ({starttime,start, input, type, meta: { touched, error } }) => (
+    <input {...input} type={type} value={starttime} />
+);
+
+const normalize = (value) => {
+    console.log(value)
+}
+
+
+
+const wrapHandleSubmit = (values, dispatch, formProps, moment) => {
+    //const start = formProps.createTime(values.start);
+    //const end = formProps.createTime(values.end);
+    // new date(2018, 3, 15),
+  let obj = {
+    title: 'Long Eventfafa',
+    start:  new Date(values.start),
+      end: new Date(values.end),
+    isComp: false
+  };
+    return dispatch(requrestPostInterviewFrame(obj));
 };
-let CreateForm = ({dispatch, handleSubmit, pristine, reset, submitting}) => (
-    <div>
+let CreateForm = ({selectedObjet,dispatch, handleSubmit, pristine, reset, submitting}) => {
+    let start = selectedObjet.start.toString();
+    let end =  selectedObjet.end.toString();
+    return  (<div>
         <h3>Create</h3>
     <form onSubmit={handleSubmit(wrapHandleSubmit)}>
+        <div>
+            <Field type="hidden" component="input" name="title" value="花見"/ >
+            start:
+
+          <Field name="start" component="select">
+              {/*todo*/}
+            <option value={start}>{start}</option>
+          </Field>
+          <br />
+              end:
+          <Field name="end" component="select">
+              {/*todo*/}
+            <option value={end}>{end}</option>
+          </Field>
+        </div>
             <Field name="mensestukan" placeholder="面談官を選択してください" component="select">
                 <option />
                 <option value="面接官1">面接官1</option>
@@ -58,18 +101,17 @@ let CreateForm = ({dispatch, handleSubmit, pristine, reset, submitting}) => (
                 <option value="会場4">会場4</option>
             </Field>
             <br/>
-            <RemoteButton dispatch={dispatch} />
-            {/*<button type="submit" disabled={pristine || submitting}>
+            {/*<RemoteButton dispatch={dispatch} />*/}
+            <button type="submit" disabled={pristine || submitting}>
                 確定する
-            </button>*/}
+            </button>
             <hr/>
             <div>
                 preview
             </div>
         </form>
     </div>
-
-)
+)}
 
 
 
@@ -82,10 +124,18 @@ let EditForm = ({handleSubmit, pristine, reset, submitting}) => (
     </div>
 )
 
+const createMaptoprops = (state, ownprops)=> {
+    let start =  state.selectedObjet.start.toString();
+    let end =  state.selectedObjet.end.toString();
+    return {
+        starttime: start
+    }
+}
 
 CreateForm = reduxForm({
     form : 'createForm',
-    onSubmit: wrapHandleSubmit
+    onSubmit: wrapHandleSubmit,
+    moment
 })(CreateForm)
 
  EditForm = reduxForm({
@@ -113,7 +163,6 @@ class Dnd extends React.Component {
             this.props.openModalDispatch(event);
         }}
         onSelectSlot={slotInfo => {
-            debugger;
              this.props.openModalDispatch(slotInfo)
             }
           }
@@ -141,6 +190,7 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(closeModal({showModal:false}))
         },
         openModalDispatch(slot){
+            dispatch(onSelectedSlot({selectedObjet: slot, isSelected: true}))
             dispatch(openModal({showModal: true}))
         },
         handleAfterOpenFunc(){
@@ -152,18 +202,19 @@ const mapDispatchToProps = (dispatch) => {
 
 const convertEventDate = (state) => {
    const eled =  state.interviewFrame.events.map((el, i)=>{
-       el.start = new Date(el.start)
+        el.start = new Date(el.start)
         el.end = new Date(el.end);
        return el;
     })
     return eled;
 }
 const mapStateToProps = (state, props) => {
-    console.log(state, 'mapStateProps');
+    console.log(state, '渡しているか');
     return  {
         showModal: state.modal.showModal,
         isComp: state.interviewFrame.events[0] ? state.interviewFrame.events[0].isComp: false,
-        events: convertEventDate(state)
+        events: convertEventDate(state),
+        selectedObjet: state.interviewFrame.selectedObjet
     }
 }
 
@@ -183,7 +234,6 @@ const margeToProps = (state, dispatch, ownProps) => {
             //dispatch(moveInterViewFrame({events: nextEvents}));
             //APIの構造に合わせて渡す更新型を変更する
             //check
-            debugger;
             dispatch(moveInterViewFrame(nextEvents));
         },
          resizeEvent(resizeType, { event, start, end }){
