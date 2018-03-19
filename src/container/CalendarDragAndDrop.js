@@ -11,8 +11,7 @@ import Modal from 'react-modal'
 import {closeModal, openModal} from '../actions/modalAction';
 import {onSelectedSlot, requrestPostInterviewFrame,setSelectEvent, moveInterViewFrame,requestInit} from '../actions/interviewFrameAction';
 import {reduxForm, Field} from 'redux-form'
-import * as moment from 'moment'
-//import {createTime} from '../utils'
+import  'moment'
 
 
 //modalでpostしたらカレンダーがわ際の再描画
@@ -38,7 +37,7 @@ const normalize = (value) => {
 }
 
 
-const wrapHandleSubmit = (values, dispatch, formProps, moment) => {
+const wrapHandleSubmit = (values, dispatch, formProps) => {
     //const start = formProps.createTime(values.start);
     //const end = formProps.createTime(values.end);
     // new date(2018, 3, 15),
@@ -124,7 +123,6 @@ const createMaptoprops = (state, ownprops) => {
 CreateForm = reduxForm({
     form : 'createForm',
     onSubmit: wrapHandleSubmit,
-    moment
 })(CreateForm)
 
  EditForm = reduxForm({
@@ -140,6 +138,7 @@ class Dnd extends React.Component {
         this.props.dispatch(requestInit());
    }
   render() {
+        console.log('render', this.props.events);
     return (
         <React.Fragment>
       <DragAndDropCalendar
