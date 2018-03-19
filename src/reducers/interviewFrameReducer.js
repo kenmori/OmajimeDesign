@@ -1,6 +1,7 @@
 import {handleActions} from 'redux-actions'
 import {update} from 'immutability-helper'
 import {ON_SELECTED,onSelectedSlot, SUCCESS_ALLINTERVIEWFRAME, SUCCESS_INTERVIEWFRAME, REQUEST_INTERVIEWFRAME, MOVE_INTERVIEWFRAME, REQUEST_INIT} from '../actions/interviewFrameAction'
+import {Map, List, fromJS} from 'immutable'
 
 const initialValues = {
   events : [{
@@ -32,15 +33,14 @@ export const interviewFrameReducer = handleActions({
         }
     },
     [SUCCESS_INTERVIEWFRAME]: (state, action) => {
-        console.log(action, "reducer successinterview")
         let re = state.events.map(function(ele, i){
+            console.log(re)
          if(ele.id === action.payload.id){
-           return  Object.assign({}, action.payload, {start: new Date(action.payload.start)}, {end: new Date(action.payload.end)});
+           return  Object.assign({}, action.payload.events, {start: action.payload.start}, {end: action.payload.end});
          } else {
             return ele
          }
         });
-        console.log(re, "reducer result")
         return {
         ...state,
             events: re

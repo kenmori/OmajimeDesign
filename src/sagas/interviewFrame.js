@@ -24,13 +24,19 @@ return fetch('http://localhost:3004/events', {
     .catch(error => console.log(error));
 }
 function putToServer(data) {
-    return fetch(`http://localhost:3004/events/${data.id}`, {
+    //TODO綺麗に
+    var a = data.events.filter((el, i)=>{
+  if(el.id === data.id){
+      return el;
+  }
+});
+    return fetch(`http://localhost:3004/events/${a[0].id}`, {
         method: 'PUT',
         headers: {
             'Content-type': 'application/json',
         },
         credentials: 'same-origin',
-        body: JSON.stringify(data.events[0]),
+        body: JSON.stringify(a[0]),
 }).then(response => {
     return response.json()
 })
