@@ -1,52 +1,60 @@
 import {handleActions} from 'redux-actions'
 import {update} from 'immutability-helper'
-import {SUCCESS_ALLINTERVIEWFRAME, SUCCESS_INTERVIEWFRAME, REQUEST_INTERVIEWFRAME, MOVE_INTERVIEWFRAME, REQUEST_INIT} from '../actions/interviewFrameAction'
-
+import {ON_SELECTED,onSelectedSlot, SUCCESS_ALLINTERVIEWFRAME, SUCCESS_INTERVIEWFRAME, REQUEST_INTERVIEWFRAME, MOVE_INTERVIEWFRAME, REQUEST_INIT} from '../actions/interviewFrameAction'
 
 const initialValues = {
   events : [{
     id: 1,
-    title: 'Long Eventfafa',
+    title: 'long eventfafa',
     start:  new Date(2018, 3, 15),
       end: new Date(2018, 3, 15),
-    isComp: false
+    isCreate: true
   }],
+  selectedObjet: {},
+  isSelected: false
 }
 export const interviewFrameReducer = handleActions({
+    [ON_SELECTED]: (state, action) => {
+        return {
+            ...state,
+        selectedObjet: action.payload.selectedObjet,
+        isSelected: true
+        }
+    },
     [REQUEST_INTERVIEWFRAME]: (state, action) => ({
         ...state,
     }),
-    //    [MOVE_INTERVIEWFRAME]: (state, action) => {
-    //   return {
-    //       ...state,
-    //       events: action.payload.events
-    //    }
-    //},
+    [MOVE_INTERVIEWFRAME]: (state, action) => {
+       return {
+           ...state,
+           events: action.payload.events,
+           isCreate: false
+        }
+    },
     [SUCCESS_INTERVIEWFRAME]: (state, action) => {
+        console.log(action, "reducer successinterview")
+        let re = state.events.map(function(ele, i){
+         if(ele.id === action.payload.id){
+           return  Object.assign({}, action.payload, {start: new Date(action.payload.start)}, {end: new Date(action.payload.end)});
+         } else {
+            return ele
+         }
+        });
+        console.log(re, "reducer result")
         return {
         ...state,
-            events: [Object.assign({
-                id: action.payload[0].id,
-                title: action.payload[0].title,
-                start: new Date(action.payload[0].start),
-                end: new Date(action.payload[0].end),
-                isComp: action.payload[0].isComp
-            })]
+            events: re
         }
     },
     [REQUEST_INIT]: (state, action) => {
-        console.log(state, action.payload, "request init")
-        debugger;
         return {
         ...state,
         }
     },
     [SUCCESS_ALLINTERVIEWFRAME]: (state, action) => {
-        console.log(state, action.payload, "request success")
         var o =  Object.assign({}, state, {events: action.payload})
         return o
     }
 }, initialValues)
 
-console.log(initialValues.events[0].start, "nini")
 export default interviewFrameReducer

@@ -7,6 +7,7 @@
     "@storybook/react": "^3.3.10",
     "history": "^4.7.2",
     "immutability-helper": "^2.6.6",
+    "immutable": "^3.8.2",
     "mirror-creator": "^1.1.0",
     "moment": "^2.21.0",
     "prop-types": "^15.6.1",

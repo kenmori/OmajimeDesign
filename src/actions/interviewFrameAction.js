@@ -18,4 +18,6 @@ export const successInterviewFrame = createAction(SUCCESS_INTERVIEWFRAME);
 export const SUCCESS_ALLINTERVIEWFRAME = 'SUCCESS_ALLINTERVIEWFRAME';
 export const succcessAllinterviewFrame = createAction(SUCCESS_ALLINTERVIEWFRAME);
 
+export const ON_SELECTED = 'ON_SELECTED';
+export const onSelectedSlot = createAction(ON_SELECTED);
 
