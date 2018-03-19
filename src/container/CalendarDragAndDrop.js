@@ -15,27 +15,14 @@ import * as moment from 'moment'
 //import {createTime} from '../utils'
 
 
-//postしたらしたのカレンダーが更新されている
-//postしたらmodalが閉じる
-//
-//pageを開けた際にapiコールして最新のcardが揃う
-//
-//modalを開いたらcardInfo(時間)が表示される
-//
+//modalでpostしたらカレンダーがわ際の再描画
+//postしたらmodalが閉じる?
+//何も予定ない場合のerror
 //編集ができる
 //更新ができる
 //modal内がrenderされてが更新される
 //プレビューが見れる
-//閉じた時にcardが更新されている
-
-//登録できる
-//登録したものを編集できるように出すモーダルを分ける
-//編集できる
-//
-//
-//
-//選択したslotの時間を反映させる
-//
+//選択したslotの時間を変更反映させる
 //
 //const RemoteButton = ({dispatch}) => {
 //    return (
@@ -51,7 +38,6 @@ const normalize = (value) => {
 }
 
 
-
 const wrapHandleSubmit = (values, dispatch, formProps, moment) => {
     //const start = formProps.createTime(values.start);
     //const end = formProps.createTime(values.end);
@@ -60,14 +46,15 @@ const wrapHandleSubmit = (values, dispatch, formProps, moment) => {
     title: 'Long Eventfafa',
     start:  new Date(values.start),
       end: new Date(values.end),
-    isComp: false
+    isCreate: false
   };
     return dispatch(requrestPostInterviewFrame(obj));
 };
 let CreateForm = ({selectedObjet,dispatch, handleSubmit, pristine, reset, submitting}) => {
     let start = selectedObjet.start.toString();
     let end =  selectedObjet.end.toString();
-    return  (<div>
+    return  (
+        <div>
         <h3>Create</h3>
     <form onSubmit={handleSubmit(wrapHandleSubmit)}>
         <div>
@@ -115,16 +102,18 @@ let CreateForm = ({selectedObjet,dispatch, handleSubmit, pristine, reset, submit
 
 
 
-let EditForm = ({handleSubmit, pristine, reset, submitting}) => (
-    <div>
+let EditForm = ({handleSubmit, pristine, reset, submitting}) => {
+    return (
+        <div>
         <h3>Edit</h3>
         <form onSubmit={handleSubmit}>
             <Field name="" component="input" type='text' />
         </form>
     </div>
-)
+    )
+};
 
-const createMaptoprops = (state, ownprops)=> {
+const createMaptoprops = (state, ownprops) => {
     let start =  state.selectedObjet.start.toString();
     let end =  state.selectedObjet.end.toString();
     return {
@@ -142,7 +131,7 @@ CreateForm = reduxForm({
     form : 'editForm'
 })(EditForm)
 
-const DragAndDropCalendar = withDragAndDrop(BigCalendar)
+const DragAndDropCalendar = withDragAndDrop(BigCalendar);
 class Dnd extends React.Component {
     constructor(props){
         super(props)
@@ -176,7 +165,7 @@ class Dnd extends React.Component {
           onRequestClose={this.props.closeModalDispatch}
           onAfterOpen={this.props.handleAfterOpenFunc}
       >
-        {this.props.isComp ? <div><EditForm {...this.props} /></div>: <div><CreateForm {...this.props} />not Comp</div>}
+        {this.props.selectedObjet.id ? <div><EditForm {...this.props} /></div>: <div><CreateForm {...this.props} />not Comp</div>}
     </Modal>
       </React.Fragment>
     )
@@ -209,10 +198,10 @@ const convertEventDate = (state) => {
     return eled;
 }
 const mapStateToProps = (state, props) => {
-    console.log(state, '渡しているか');
+    console.log(state, "mapToProps")
     return  {
         showModal: state.modal.showModal,
-        isComp: state.interviewFrame.events[0] ? state.interviewFrame.events[0].isComp: false,
+        isCreate: state.interviewFrame.events ? state.interviewFrame.events[0].isCreate: false,
         events: convertEventDate(state),
         selectedObjet: state.interviewFrame.selectedObjet
     }
@@ -234,7 +223,7 @@ const margeToProps = (state, dispatch, ownProps) => {
             //dispatch(moveInterViewFrame({events: nextEvents}));
             //APIの構造に合わせて渡す更新型を変更する
             //check
-            dispatch(moveInterViewFrame(nextEvents));
+            dispatch(moveInterViewFrame({events: nextEvents, id: updatedEvent.id}));
         },
          resizeEvent(resizeType, { event, start, end }){
             const { events } = state

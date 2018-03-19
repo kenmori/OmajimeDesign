@@ -8,7 +8,7 @@ const initialValues = {
     title: 'long eventfafa',
     start:  new Date(2018, 3, 15),
       end: new Date(2018, 3, 15),
-    iscomp: false
+    isCreate: true
   }],
   selectedObjet: {},
   isSelected: false
@@ -27,19 +27,23 @@ export const interviewFrameReducer = handleActions({
     [MOVE_INTERVIEWFRAME]: (state, action) => {
        return {
            ...state,
-           events: action.payload.events
+           events: action.payload.events,
+           isCreate: false
         }
     },
     [SUCCESS_INTERVIEWFRAME]: (state, action) => {
+        console.log(action, "reducer successinterview")
+        let re = state.events.map(function(ele, i){
+         if(ele.id === action.payload.id){
+           return  Object.assign({}, action.payload, {start: new Date(action.payload.start)}, {end: new Date(action.payload.end)});
+         } else {
+            return ele
+         }
+        });
+        console.log(re, "reducer result")
         return {
         ...state,
-            events: [Object.assign({
-                id: action.payload.id,
-                title: action.payload.title,
-                start: new Date(action.payload.start),
-                end: new Date(action.payload.end),
-                isComp: action.payload.isComp
-            })]
+            events: re
         }
     },
     [REQUEST_INIT]: (state, action) => {
